@@ -3,9 +3,9 @@
 {% block content %}
     <div class="container">
     <!-- Content here -->
-        {% for docs in doc %}
+        {% for docs in doc.all %}
             <p>
-                {{ docs | linebreaks }}
+                {{ docs.body | linebreaks }}
             </p>
         {% endfor %}
     </div>
