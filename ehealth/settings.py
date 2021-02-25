@@ -38,9 +38,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'home.apps.HomeConfig',
+    'api.apps.ApiConfig',
 
     # third party
     'debug_toolbar',
+    'rest_framework',
 ]
 
 INTERNAL_IPS = [
@@ -110,6 +112,9 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+REST_FRAMEWORK = {
+    'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.coreapi.AutoSchema'
+}
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.0/topics/i18n/
