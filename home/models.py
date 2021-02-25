@@ -31,13 +31,12 @@ class Project(models.Model):
         super(Project, self).save()
 
     def get_absolute_url(self):
-        return reverse('project', kwargs={
+        return reverse(
+            'project', kwargs={
                 "slug": self.slug,
                 "pk": self.pk
-            })
+            }
+        )
 
     class Meta:
         ordering = ('topic',)
-
-
-

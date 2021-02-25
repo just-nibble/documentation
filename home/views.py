@@ -1,24 +1,25 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render
 from .models import Documentation, Project
-
+from rest_framework import generics
+from .serializers import ProjectSerializer, DocumentationSerializer
 # Create your views here.
 
 
-def index(request):
-    projects = Project.objects.all()
-    return render(
-        request, 'index.html',
-        {
-            'pro': projects
-        }
-    )
+class ProjectListView(generics.ListCreateAPIView):
+    queryset = Project.objects.all()
+    serializer_class = ProjectSerializer
 
 
-def project(request, slug):
-    projects = get_object_or_404(Project, slug=slug)
-    return render(
-        request, 'projects/project.html',
-        {
-            'pro': projects,
-        }
-    )
+class ProjectDetailView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Project.objects.all()
+    serializer_class = ProjectSerializer
+
+
+class DocumentationListView(generics.ListCreateAPIView):
+    queryset = Documentation.objects.all()
+    serializer_class = DocumentationSerializer
+
+
+class DocumentationDetailView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Documentation.objects.all()
+    serializer_class = DocumentationSerializer
